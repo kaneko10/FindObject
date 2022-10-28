@@ -1,0 +1,11 @@
+framework module MappingSupport {
+  umbrella header "MappingSupport.h"
+
+  export *
+  module * { export * }
+}
+
+module MappingSupport.Swift {
+  header "MappingSupport-Swift.h"
+  requires objc
+}

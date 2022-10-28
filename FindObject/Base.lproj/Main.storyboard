@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="FindObject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJ5-RH-beu">
+                                <rect key="frame" x="0.0" y="24" width="834" height="1170"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWl-uC-V5s" userLabel="sikaku">
+                                <rect key="frame" x="389.5" y="1059" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Z76-jJ-qfl"/>
+                                    <constraint firstAttribute="width" constant="55" id="zrb-qB-Tc1"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBG-hl-1Nx" userLabel="maru">
+                                <rect key="frame" x="392" y="1061.5" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="O8w-tD-osn"/>
+                                    <constraint firstAttribute="width" constant="50" id="zEB-Dy-7p5"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="scanStartButtonTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Rg6-0q-zDf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YJ5-RH-beu" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="3RH-Ld-hos"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="YJ5-RH-beu" secondAttribute="trailing" id="B6G-9K-cve"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="JWl-uC-V5s" secondAttribute="bottom" constant="60" id="Qwe-ht-VFd"/>
+                            <constraint firstItem="JWl-uC-V5s" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="Yhe-vS-DgH"/>
+                            <constraint firstAttribute="bottom" secondItem="YJ5-RH-beu" secondAttribute="bottom" id="cCU-nn-EXV"/>
+                            <constraint firstItem="KBG-hl-1Nx" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="dUi-mM-nSN"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="KBG-hl-1Nx" secondAttribute="bottom" constant="62.5" id="mLZ-Og-Dy5"/>
+                            <constraint firstItem="YJ5-RH-beu" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="vKQ-Ug-1UI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scanStartButton" destination="KBG-hl-1Nx" id="EOE-xB-Fbl"/>
+                        <outlet property="scanStopButton" destination="JWl-uC-V5s" id="e8e-4F-eBo"/>
+                        <outlet property="sceneView" destination="YJ5-RH-beu" id="BkT-e4-rCl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19.424460431654676" y="64.824120603015075"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
