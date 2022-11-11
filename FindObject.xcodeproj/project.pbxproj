@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B695EDC290685CA001B0399 /* MappingSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B695EDA2906859D001B0399 /* MappingSupport.framework */; };
-		2B695EDD290685CA001B0399 /* MappingSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B695EDA2906859D001B0399 /* MappingSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26C60981290EE955006B00A2 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 26C60980290EE955006B00A2 /* Shaders.metal */; };
+		26FB1303291D703E00489DBE /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1302291D703E00489DBE /* EditViewController.swift */; };
+		26FB1307291D708E00489DBE /* EditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FB1306291D708E00489DBE /* EditView.storyboard */; };
+		26FB1309291D71CF00489DBE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1308291D71CF00489DBE /* MenuViewController.swift */; };
+		26FB130B291D71E300489DBE /* MenuView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FB130A291D71E300489DBE /* MenuView.storyboard */; };
+		26FB130D291D853400489DBE /* DataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB130C291D853400489DBE /* DataTableViewController.swift */; };
+		26FB1314291D915400489DBE /* BuildTextureNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1313291D915400489DBE /* BuildTextureNode.swift */; };
+		26FB1316291D92F100489DBE /* BuildMeshNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1315291D92F100489DBE /* BuildMeshNode.swift */; };
+		26FB1318291D9B6300489DBE /* TextureImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB1317291D9B6300489DBE /* TextureImage.swift */; };
+		26FB132F291DAA4700489DBE /* MappingSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FB132D291DAA4000489DBE /* MappingSupport.framework */; };
+		26FB1330291DAA4700489DBE /* MappingSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26FB132D291DAA4000489DBE /* MappingSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26FB1336291DB1A100489DBE /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 26FB1335291DB1A100489DBE /* PKHUD */; };
+		26FB1339291DB38600489DBE /* GPUTextureCalculate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FB1337291DB37C00489DBE /* GPUTextureCalculate.framework */; };
+		26FB133A291DB38700489DBE /* GPUTextureCalculate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26FB1337291DB37C00489DBE /* GPUTextureCalculate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B695EDF290689CC001B0399 /* SCNGometry+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B695EDE290689CC001B0399 /* SCNGometry+Ext.swift */; };
 		2B695EE329068E38001B0399 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B695EE229068E38001B0399 /* DataManagement.swift */; };
 		2BF04DA828F560BE0003BCCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF04DA728F560BE0003BCCB /* AppDelegate.swift */; };
 		2BF04DAA28F560BE0003BCCB /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF04DA928F560BE0003BCCB /* art.scnassets */; };
-		2BF04DAC28F560BE0003BCCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF04DAB28F560BE0003BCCB /* ViewController.swift */; };
-		2BF04DAF28F560BE0003BCCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF04DAD28F560BE0003BCCB /* Main.storyboard */; };
+		2BF04DAC28F560BE0003BCCB /* MappingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF04DAB28F560BE0003BCCB /* MappingViewController.swift */; };
+		2BF04DAF28F560BE0003BCCB /* MappingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF04DAD28F560BE0003BCCB /* MappingView.storyboard */; };
 		2BF04DB128F560BF0003BCCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF04DB028F560BF0003BCCB /* Assets.xcassets */; };
 		2BF04DB428F560BF0003BCCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF04DB228F560BF0003BCCB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -40,7 +52,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2B695EDD290685CA001B0399 /* MappingSupport.framework in Embed Frameworks */,
+				26FB133A291DB38700489DBE /* GPUTextureCalculate.framework in Embed Frameworks */,
+				26FB1330291DAA4700489DBE /* MappingSupport.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,14 +61,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B695EDA2906859D001B0399 /* MappingSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MappingSupport.framework; sourceTree = "<group>"; };
+		26C60980290EE955006B00A2 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		26C60982290EE9B0006B00A2 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		26C60983290EE9E6006B00A2 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		26C60984290EEB9C006B00A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26FB1302291D703E00489DBE /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		26FB1306291D708E00489DBE /* EditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditView.storyboard; sourceTree = "<group>"; };
+		26FB1308291D71CF00489DBE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		26FB130A291D71E300489DBE /* MenuView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuView.storyboard; sourceTree = "<group>"; };
+		26FB130C291D853400489DBE /* DataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewController.swift; sourceTree = "<group>"; };
+		26FB1313291D915400489DBE /* BuildTextureNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTextureNode.swift; sourceTree = "<group>"; };
+		26FB1315291D92F100489DBE /* BuildMeshNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildMeshNode.swift; sourceTree = "<group>"; };
+		26FB1317291D9B6300489DBE /* TextureImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureImage.swift; sourceTree = "<group>"; };
+		26FB132D291DAA4000489DBE /* MappingSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MappingSupport.framework; sourceTree = "<group>"; };
+		26FB1337291DB37C00489DBE /* GPUTextureCalculate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUTextureCalculate.framework; sourceTree = "<group>"; };
 		2B695EDE290689CC001B0399 /* SCNGometry+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNGometry+Ext.swift"; sourceTree = "<group>"; };
 		2B695EE229068E38001B0399 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		2BF04DA428F560BE0003BCCB /* FindObject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindObject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF04DA728F560BE0003BCCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BF04DA928F560BE0003BCCB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		2BF04DAB28F560BE0003BCCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2BF04DAE28F560BE0003BCCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BF04DAB28F560BE0003BCCB /* MappingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingViewController.swift; sourceTree = "<group>"; };
+		2BF04DAE28F560BE0003BCCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MappingView.storyboard; sourceTree = "<group>"; };
 		2BF04DB028F560BF0003BCCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BF04DB328F560BF0003BCCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,13 +91,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B695EDC290685CA001B0399 /* MappingSupport.framework in Frameworks */,
+				26FB1339291DB38600489DBE /* GPUTextureCalculate.framework in Frameworks */,
+				26FB1336291DB1A100489DBE /* PKHUD in Frameworks */,
+				26FB132F291DAA4700489DBE /* MappingSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26C6097F290EE925006B00A2 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				26C60980290EE955006B00A2 /* Shaders.metal */,
+				26C60982290EE9B0006B00A2 /* ShaderTypes.h */,
+				26C60983290EE9E6006B00A2 /* Bridging-Header.h */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		26FB1304291D704900489DBE /* EditModel */ = {
+			isa = PBXGroup;
+			children = (
+				26FB130C291D853400489DBE /* DataTableViewController.swift */,
+				26FB1302291D703E00489DBE /* EditViewController.swift */,
+				26FB1306291D708E00489DBE /* EditView.storyboard */,
+			);
+			path = EditModel;
+			sourceTree = "<group>";
+		};
+		26FB1305291D706600489DBE /* MakeModel */ = {
+			isa = PBXGroup;
+			children = (
+				2BF04DAB28F560BE0003BCCB /* MappingViewController.swift */,
+				2BF04DAD28F560BE0003BCCB /* MappingView.storyboard */,
+			);
+			path = MakeModel;
+			sourceTree = "<group>";
+		};
+		26FB1312291D911B00489DBE /* BuildNode */ = {
+			isa = PBXGroup;
+			children = (
+				2B695EDE290689CC001B0399 /* SCNGometry+Ext.swift */,
+				26FB1313291D915400489DBE /* BuildTextureNode.swift */,
+				26FB1315291D92F100489DBE /* BuildMeshNode.swift */,
+				26FB1317291D9B6300489DBE /* TextureImage.swift */,
+			);
+			path = BuildNode;
+			sourceTree = "<group>";
+		};
 		2BF04D9B28F560BE0003BCCB = {
 			isa = PBXGroup;
 			children = (
@@ -92,14 +160,18 @@
 		2BF04DA628F560BE0003BCCB /* FindObject */ = {
 			isa = PBXGroup;
 			children = (
+				26C60984290EEB9C006B00A2 /* Info.plist */,
 				2BF04DA728F560BE0003BCCB /* AppDelegate.swift */,
-				2BF04DA928F560BE0003BCCB /* art.scnassets */,
-				2BF04DAB28F560BE0003BCCB /* ViewController.swift */,
+				26FB1308291D71CF00489DBE /* MenuViewController.swift */,
+				26FB130A291D71E300489DBE /* MenuView.storyboard */,
 				2B695EE229068E38001B0399 /* DataManagement.swift */,
-				2BF04DAD28F560BE0003BCCB /* Main.storyboard */,
+				26FB1305291D706600489DBE /* MakeModel */,
+				26FB1304291D704900489DBE /* EditModel */,
+				26FB1312291D911B00489DBE /* BuildNode */,
+				26C6097F290EE925006B00A2 /* Metal */,
+				2BF04DA928F560BE0003BCCB /* art.scnassets */,
 				2BF04DB028F560BF0003BCCB /* Assets.xcassets */,
 				2BF04DB228F560BF0003BCCB /* LaunchScreen.storyboard */,
-				2B695EDE290689CC001B0399 /* SCNGometry+Ext.swift */,
 			);
 			path = FindObject;
 			sourceTree = "<group>";
@@ -107,7 +179,8 @@
 		2BF04DBA28F7F7A90003BCCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B695EDA2906859D001B0399 /* MappingSupport.framework */,
+				26FB132D291DAA4000489DBE /* MappingSupport.framework */,
+				26FB1337291DB37C00489DBE /* GPUTextureCalculate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +203,9 @@
 			dependencies = (
 			);
 			name = FindObject;
+			packageProductDependencies = (
+				26FB1335291DB1A100489DBE /* PKHUD */,
+			);
 			productName = FindObject;
 			productReference = 2BF04DA428F560BE0003BCCB /* FindObject.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +234,9 @@
 				Base,
 			);
 			mainGroup = 2BF04D9B28F560BE0003BCCB;
+			packageReferences = (
+				26FB1334291DB1A100489DBE /* XCRemoteSwiftPackageReference "PKHUD" */,
+			);
 			productRefGroup = 2BF04DA528F560BE0003BCCB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,8 +253,10 @@
 			files = (
 				2BF04DAA28F560BE0003BCCB /* art.scnassets in Resources */,
 				2BF04DB428F560BF0003BCCB /* LaunchScreen.storyboard in Resources */,
+				26FB130B291D71E300489DBE /* MenuView.storyboard in Resources */,
+				26FB1307291D708E00489DBE /* EditView.storyboard in Resources */,
 				2BF04DB128F560BF0003BCCB /* Assets.xcassets in Resources */,
-				2BF04DAF28F560BE0003BCCB /* Main.storyboard in Resources */,
+				2BF04DAF28F560BE0003BCCB /* MappingView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,21 +268,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B695EDF290689CC001B0399 /* SCNGometry+Ext.swift in Sources */,
-				2BF04DAC28F560BE0003BCCB /* ViewController.swift in Sources */,
+				26FB130D291D853400489DBE /* DataTableViewController.swift in Sources */,
+				2BF04DAC28F560BE0003BCCB /* MappingViewController.swift in Sources */,
+				26FB1316291D92F100489DBE /* BuildMeshNode.swift in Sources */,
+				26FB1303291D703E00489DBE /* EditViewController.swift in Sources */,
+				26FB1309291D71CF00489DBE /* MenuViewController.swift in Sources */,
 				2B695EE329068E38001B0399 /* DataManagement.swift in Sources */,
+				26FB1314291D915400489DBE /* BuildTextureNode.swift in Sources */,
 				2BF04DA828F560BE0003BCCB /* AppDelegate.swift in Sources */,
+				26C60981290EE955006B00A2 /* Shaders.metal in Sources */,
+				26FB1318291D9B6300489DBE /* TextureImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2BF04DAD28F560BE0003BCCB /* Main.storyboard */ = {
+		2BF04DAD28F560BE0003BCCB /* MappingView.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2BF04DAE28F560BE0003BCCB /* Base */,
 			);
-			name = Main.storyboard;
+			name = MappingView.storyboard;
 			sourceTree = "<group>";
 		};
 		2BF04DB228F560BF0003BCCB /* LaunchScreen.storyboard */ = {
@@ -337,32 +425,33 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HZZ8HYDF35;
+				DEVELOPMENT_TEAM = 424LNK92VG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = FindObject/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = MenuView;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kaneko.FindObject2;
+				PRODUCT_BUNDLE_IDENTIFIER = kaneko.FindObject.ankou77;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "FindObject/Metal/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -376,32 +465,33 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HZZ8HYDF35;
+				DEVELOPMENT_TEAM = 424LNK92VG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = FindObject/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = MenuView;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kaneko.FindObject2;
+				PRODUCT_BUNDLE_IDENTIFIER = kaneko.FindObject.ankou77;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "FindObject/Metal/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -429,6 +519,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		26FB1334291DB1A100489DBE /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26FB1335291DB1A100489DBE /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26FB1334291DB1A100489DBE /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2BF04D9C28F560BE0003BCCB /* Project object */;
 }
