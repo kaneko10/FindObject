@@ -43,12 +43,3 @@ extension SCNGeometryPrimitiveType {
         }
     }
 }
-extension ARMeshGeometry {
-    func classificationOf(faceWithIndex index: Int) -> ARMeshClassification {
-        guard let classification = classification else { return .none }
-        assert(classification.format == MTLVertexFormat.uchar, "Expected one unsigned char (one byte) per classification")
-        let classificationPointer = classification.buffer.contents().advanced(by: classification.offset + (classification.stride * index))
-        let classificationValue = Int(classificationPointer.assumingMemoryBound(to: CUnsignedChar.self).pointee)
-        return ARMeshClassification(rawValue: classificationValue) ?? .none
-    }
-}
