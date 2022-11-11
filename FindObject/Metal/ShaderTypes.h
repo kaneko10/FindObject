@@ -1,19 +1,12 @@
 //
-//  MappingSupport.h
-//  MappingSupport
+//  ShaderTypes.h
+//  FindObject
 //
-//  Created by 安江洸希 on 2022/10/11.
+//  Created by 安江洸希 on 2022/10/31.
 //
 
-#import <Foundation/Foundation.h>
-
-//! Project version number for MappingSupport.
-FOUNDATION_EXPORT double MappingSupportVersionNumber;
-
-//! Project version string for MappingSupport.
-FOUNDATION_EXPORT const unsigned char MappingSupportVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <MappingSupport/PublicHeader.h>
+#ifndef ShaderTypes_h
+#define ShaderTypes_h
 
 #include <simd/simd.h>
 
@@ -88,8 +81,6 @@ struct anchorUniforms {
 
 struct MeshUniforms {
     simd_float3 vertex1;
-    //simd_float3 vertex2;
-    //simd_float3 vertex3;
     vector_float4 color;
     int index;
     int originIndex;
@@ -115,4 +106,6 @@ struct AnchorUniforms {
     int screenWidth;
     int screenHeight;
 };
+
+#endif /* ShaderTypes_h */
 

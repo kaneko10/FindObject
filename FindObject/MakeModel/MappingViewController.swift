@@ -13,8 +13,8 @@ import RealityKit
 
 import MappingSupport
 
-class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
-
+class MappingViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     let scene = SCNScene()
@@ -32,62 +32,41 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     var timer: Timer!
     var parametaCount = 0
     var parameta_flag = false
+    var imageData: Data!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
         sceneView.session.delegate = self
         sceneView.scene = scene
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-
-        if let View = view as? ARSCNView {
-            print("call")
-//        self.depth_pointCloudRenderer = MappingSupport.depth_Renderer(session: self.sceneView.session, metalDevice: self.sceneView.device!, sceneView:self.sceneView)
-//            self.depth_pointCloudRenderer.drawRectResized(size: self.sceneView.bounds.size)
+        
+        if let View = sceneView {
+            self.depth_pointCloudRenderer = MappingSupport.depth_Renderer(session: View.session, metalDevice: View.device!, sceneView: View)
+            self.depth_pointCloudRenderer.drawRectResized(size: View.bounds.size)
         }
-        print(sceneView)
+        
+        //保存ディレクトリの初期化
+        DataManagement.removeDirectory(name: "保存前")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Create a session configuration
-        // let configuration = ARWorldTrackingConfiguration()
         configuration.environmentTexturing = .none
-
-        // Run the view's session
         sceneView.session.run(configuration)
-        
-//        self.depth_pointCloudRenderer = MappingSupport.depth_Renderer(session: self.sceneView.session, metalDevice: self.sceneView.device!, sceneView:self.sceneView)
-//        self.depth_pointCloudRenderer.drawRectResized(size: self.sceneView.bounds.size)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        self.depth_pointCloudRenderer = MappingSupport.depth_Renderer(session: self.sceneView!.session, metalDevice: self.sceneView!.device!, sceneView:self.sceneView!)
-        self.depth_pointCloudRenderer.drawRectResized(size: self.sceneView!.bounds.size)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        self.depth_pointCloudRenderer = MappingSupport.depth_Renderer(session: self.sceneView.session, metalDevice: self.sceneView.device!, sceneView:self.sceneView)
-//        self.depth_pointCloudRenderer.drawRectResized(size: self.sceneView.bounds.size)
-//        super.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("viewWillDaisa")
-       
+        
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
     @IBAction func scanStartButtonTapped(_ sender: UIButton) {
         print("startTapped")
         
@@ -95,6 +74,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             UIView.animate(withDuration: 0.2) {
                 self.scanStartButton.layer.cornerRadius = 25
                 self.scanStopButton.layer.cornerRadius = 27.5
+                
+                self.parameta_flag = false
+                    
+                self.save_allData()
                 
             }
         } else {
@@ -111,16 +94,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
                 self.sceneView.session.run(self.configuration, options: [.resetTracking, .removeExistingAnchors, .resetSceneReconstruction])
                 
                 // データ保存用のディレクトリ作成
-                DataManagement.makeDirectory(name: "pic")
-                DataManagement.makeDirectory(name: "json")
-                DataManagement.makeDirectory(name: "depth")
-                DataManagement.makeDirectory(name: "mesh")
+                DataManagement.makeDirectory(name: "保存前/pic")
+                DataManagement.makeDirectory(name: "保存前/json")
+                DataManagement.makeDirectory(name: "保存前/depth")
+                DataManagement.makeDirectory(name: "保存前/mesh")
+                
+                //マッピング開始時の画像を取得
+                let startImg = self.sceneView.snapshot()
+                self.imageData = startImg.jpegData(compressionQuality: 0.5)
                 
                 self.parameta_flag = true
                 self.lastCameraTransform = self.sceneView.session.currentFrame?.camera.transform
-                
-                
-
             }
         }
         isScanning.toggle()
@@ -134,9 +118,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             let (jsonData, jsonBool) = depth_pointCloudRenderer.get_jsonData()
             if depthBool, imgBool, jsonBool {
                 DispatchQueue.global().async { [self] in
-                    DataManagement.saveData(name: "pic\(parametaCount).jpg", Data: imgData)
-                    DataManagement.saveData(name: "json\(parametaCount).data", Data: jsonData)
-                    //DataManagement.saveData(name: "depth\(parametaCount).data", Data: depthData)
+                    DataManagement.saveData(name: "保存前/pic/pic\(parametaCount).jpg", Data: imgData)
+                    DataManagement.saveData(name: "保存前/json/json\(parametaCount).data", Data: jsonData)
+                    DataManagement.saveData(name: "保存前/depth/depth\(parametaCount).data", Data: depthData)
                     DispatchQueue.main.async {
                         self.parametaCount += 1
                         //self.takeParametaCountLabel.text = "取得パラメータ数：\(self.parametaCount)"
@@ -147,13 +131,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
     }
     
-    @IBAction func testTap(_ sender: UIButton) {
-        print("testtap")
-        
-    }
-    
-    
-//    let degreesToRadian = Float.pi / 180
     private let cameraRotationThreshold = cos(2 * Float.pi / 180)
     private let cameraTranslationThreshold: Float = pow(0.02, 2)
     var lastCameraTransform: simd_float4x4!
@@ -167,50 +144,85 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         return shouldAccum
     }
     
-    
-    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+    func save_allData() {
         
-            for anchor in anchors {
-                var sceneNode : SCNNode?
-                if let meshAnchor = anchor as? ARMeshAnchor {
-                    print(meshAnchor)
-                    let meshGeometry = SCNGeometry.fromAnchor(meshAnchor: meshAnchor)
-                    sceneNode = SCNNode(geometry: meshGeometry)
-                }
-                if let node = sceneNode {
-                    node.simdTransform = anchor.transform
-                    knownAnchors[anchor.identifier] = node
-                    //node.name = “mesh”
-                    //meshAnchors_array.append(node.name!)
-                    //anchor_picNum[anchor.identifier] = [parametaCount]
-                    //if mapping_mesh_flag == true {
-                        //print(“メッシュ追加“)
-                        //sceneView.scene.rootNode.addChildNode(node)
-                    //}
-                    //modelView.scene?.rootNode.addChildNode(node)
-                    sceneView.scene.rootNode.addChildNode(node)
+        self.save_meshData()
+        
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+        let filename = format.string(from: date)
+        print("現在時刻：\(filename)")
+        
+        DataManagement.rename(oldName: "保存前", newName: filename)
+        
+        self.save_worldmapData(filename: filename)
+    }
+    
+    //mesh保存
+    func save_meshData() {
+        guard let anchors = sceneView.session.currentFrame?.anchors else { return }
+        let meshAnchors = anchors.compactMap { $0 as? ARMeshAnchor}
+        
+        for (i, anchor) in meshAnchors.enumerated() {
+            
+            guard let meshData = try? NSKeyedArchiver.archivedData(withRootObject: anchor, requiringSecureCoding: true)
+            else{ return }
+            
+            //メッシュデータを保存
+            DataManagement.saveData(name: "保存前/mesh/mesh\(i).data", Data: meshData)
+        }
+    }
+    
+    //worldmap保存
+    func save_worldmapData(filename: String) {
+        sceneView.session.getCurrentWorldMap { [self] worldMap, error in
+            if let map = worldMap {
+                if let worldData = try? NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true) {
+                    
+                    //データをドキュメント内に保存
+                    DataManagement.saveData(name: "\(filename)/worldMap.data", Data: worldData)
+                    DataManagement.saveData(name: "\(filename)/worldImage.jpg", Data: imageData!)
                 }
             }
-        
+        }
+    }
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        if parameta_flag == true {
+            self.depth_pointCloudRenderer.draw_depth() //深度情報
+            self.depth_pointCloudRenderer.draw_mapping() //マッピング支援
+        }
+    }
+    
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+        for anchor in anchors {
+            var sceneNode : SCNNode?
+            if let meshAnchor = anchor as? ARMeshAnchor {
+                let meshGeometry = SCNGeometry.fromAnchor(meshAnchor: meshAnchor)
+                sceneNode = SCNNode(geometry: meshGeometry)
+            }
+            if let node = sceneNode {
+                node.simdTransform = anchor.transform
+                knownAnchors[anchor.identifier] = node
+                //sceneView.scene.rootNode.addChildNode(node)
+            }
+        }
     }
     
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-//        if mesh_flag {
-//            var meshAnchors = [ARMeshAnchor]()
-            for anchor in anchors {
-                if let node = knownAnchors[anchor.identifier] {
-                    if let meshAnchor = anchor as? ARMeshAnchor {
-//                        meshAnchors.append(meshAnchor) //updateされたメッシュ情報
-//                        if anchor_picNum[meshAnchor.identifier]?.firstIndex(of: parametaCount) == nil {
-//                            anchor_picNum[meshAnchor.identifier]!.append(parametaCount)
-//                        }
-                        node.geometry = SCNGeometry.fromAnchor(meshAnchor: meshAnchor)
-                    }
-                    node.simdTransform = anchor.transform
+        var meshAnchors = [ARMeshAnchor]()
+        for anchor in anchors {
+            if let node = knownAnchors[anchor.identifier] {
+                if let meshAnchor = anchor as? ARMeshAnchor {
+                    meshAnchors.append(meshAnchor) //updateされたメッシュ情報
+                    node.geometry = SCNGeometry.fromAnchor(meshAnchor: meshAnchor)
                 }
+                node.simdTransform = anchor.transform
             }
-            //depth_pointCloudRenderer.meshAnchors = meshAnchors
-//        }
+        }
+        depth_pointCloudRenderer.meshAnchors = meshAnchors
     }
     
     func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
@@ -220,18 +232,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
                 // knownAnchors からも削除
                 knownAnchors.removeValue(forKey: anchor.identifier)
             }
-        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        if parameta_flag == true {
-            self.depth_pointCloudRenderer.draw_depth() //深度情報
-//            if mappingSupportFlag == false {
-//                self.depth_pointCloudRenderer.draw_mapping() //マッピング支援
-//                if remap_flag {
-//                    depth_pointCloudRenderer.meshAnchors = remapAnchors
-//                }
-//            }
         }
     }
     

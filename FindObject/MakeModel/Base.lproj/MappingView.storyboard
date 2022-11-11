@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Mapping View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="FindObject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MappingViewController" id="BV1-FR-VrT" customClass="MappingViewController" customModule="FindObject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJ5-RH-beu">
-                                <rect key="frame" x="0.0" y="24" width="834" height="1170"/>
+                                <rect key="frame" x="0.0" y="24" width="834" height="1150"/>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWl-uC-V5s" userLabel="sikaku">
                                 <rect key="frame" x="389.5" y="1059" width="55" height="55"/>
@@ -63,9 +62,9 @@
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="YJ5-RH-beu" secondAttribute="trailing" id="B6G-9K-cve"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="JWl-uC-V5s" secondAttribute="bottom" constant="60" id="Qwe-ht-VFd"/>
                             <constraint firstItem="JWl-uC-V5s" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="Yhe-vS-DgH"/>
-                            <constraint firstAttribute="bottom" secondItem="YJ5-RH-beu" secondAttribute="bottom" id="cCU-nn-EXV"/>
                             <constraint firstItem="KBG-hl-1Nx" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="dUi-mM-nSN"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="KBG-hl-1Nx" secondAttribute="bottom" constant="62.5" id="mLZ-Og-Dy5"/>
+                            <constraint firstItem="YJ5-RH-beu" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="pCf-8P-6yE"/>
                             <constraint firstItem="YJ5-RH-beu" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="vKQ-Ug-1UI"/>
                         </constraints>
                     </view>

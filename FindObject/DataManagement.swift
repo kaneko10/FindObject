@@ -6,7 +6,9 @@
 //
 
 import Foundation
+
 class DataManagement {
+    
     //ディレクトリ作成
     static func makeDirectory(name: String) {
         if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -18,6 +20,7 @@ class DataManagement {
             }
         }
     }
+    
     //ディレクトリ削除
     static func removeDirectory(name: String) {
         if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -29,6 +32,20 @@ class DataManagement {
             }
         }
     }
+    
+    //ディレクトリのリネーム
+    static func rename(oldName: String, newName: String) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let atPathName = "\(paths)/\(oldName)"
+        let toPathName = "\(paths)/\(newName)"
+        do {
+            try FileManager.default.moveItem(atPath: atPathName, toPath: toPathName)
+            print("ディレクトリ:リネーム成功")
+        } catch {
+            print("ディレクトリ:リネーム失敗")
+        }
+    }
+    
     //データ保存
     static func saveData(name: String, Data: Data) {
         //ディレクトリ内にデータを保存
@@ -41,18 +58,47 @@ class DataManagement {
             }
         }
     }
+    
+    //データ取得
+    static func getData(name: String) -> Data {
+        var data: Data!
+        if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let dataPath = url.appendingPathComponent("\(name)")
+            data = try! Data(contentsOf: dataPath)
+        }
+        return data
+    }
+    
     //データ数取得
-    static func getDataCount(name: String) {
+    static func getDataCount(name: String) -> Int {
+        var count = 0
         if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let dataPath = url.appendingPathComponent("\(name)")
             do {
                 let contentUrls = try FileManager.default.contentsOfDirectory(at: dataPath, includingPropertiesForKeys: nil)
                 print(contentUrls.count)
+                count = contentUrls.count
                 //        let files = contentUrls.map{$0.lastPathComponent}
                 //        print(files)
             } catch {
                 print(error)
             }
         }
+        return count
+    }
+    
+    //全体のデータ数取得
+    static func getEntireDataCount() -> [String] {
+        var filenameArray = [String]()
+        if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            do {
+                let contentUrls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+                //print(contentUrls.count)
+                filenameArray = contentUrls.map{$0.lastPathComponent}
+            } catch {
+                print(error)
+            }
+        }
+        return filenameArray
     }
 }
